@@ -12,8 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Orgs">
         <activity
-            android:name=".ui.activity.DetalhesProdutoActivity"
-            android:theme="@style/Theme.Orgs.NoActionBar" />
+            android:name=".ui.activity.DetalhesProdutoActivity" />
         <activity android:name=".ui.activity.FormularioProdutoActivity" />
         <activity
             android:name=".ui.activity.ListaProdutosActivity"
