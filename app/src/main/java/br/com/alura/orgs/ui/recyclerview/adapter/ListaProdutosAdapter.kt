@@ -2,9 +2,12 @@ package br.com.alura.orgs.ui.recyclerview.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
+import br.com.alura.orgs.R
 import br.com.alura.orgs.databinding.ProdutoItemBinding
 import br.com.alura.orgs.extensions.formataParaMoedaBrasileira
 import br.com.alura.orgs.extensions.tentaCarregarImagem
@@ -13,13 +16,15 @@ import br.com.alura.orgs.model.Produto
 class ListaProdutosAdapter(
     private val context: Context,
     produtos: List<Produto> = emptyList(),
-    var quandoClicaNoItem: (produto: Produto) -> Unit = {}
+    var quandoClicaNoItem: (produto: Produto) -> Unit = {},
+    var quandoClicaEmEditar: (produto: Produto) -> Unit = {},
+    var quandoClicaEmRemover: (produto: Produto) -> Unit = {}
 ) : RecyclerView.Adapter<ListaProdutosAdapter.ViewHolder>() {
 
     private val produtos = produtos.toMutableList()
 
     inner class ViewHolder(private val binding: ProdutoItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+        RecyclerView.ViewHolder(binding.root), PopupMenu.OnMenuItemClickListener {
 
         private lateinit var produto: Produto
 
@@ -28,6 +33,16 @@ class ListaProdutosAdapter(
                 if (::produto.isInitialized) {
                     quandoClicaNoItem(produto)
                 }
+            }
+            itemView.setOnLongClickListener {
+                PopupMenu(context, itemView).apply {
+                    menuInflater.inflate(
+                        R.menu.menu_detalhes_produto,
+                        menu
+                    )
+                    setOnMenuItemClickListener(this@ViewHolder)
+                }.show()
+                true
             }
         }
 
@@ -53,6 +68,19 @@ class ListaProdutosAdapter(
             binding.imageView.tentaCarregarImagem(produto.imagem)
         }
 
+        override fun onMenuItemClick(item: MenuItem?): Boolean {
+            item?.let {
+                when (it.itemId) {
+                    R.id.menu_detalhes_produto_editar -> {
+                        quandoClicaEmEditar(produto)
+                    }
+                    R.id.menu_detalhes_produto_remover -> {
+                        quandoClicaEmRemover(produto)
+                    }
+                }
+            }
+            return true
+        }
 
     }
 
@@ -61,6 +89,7 @@ class ListaProdutosAdapter(
         val binding = ProdutoItemBinding.inflate(inflater, parent, false)
         return ViewHolder(binding)
     }
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val produto = produtos[position]
