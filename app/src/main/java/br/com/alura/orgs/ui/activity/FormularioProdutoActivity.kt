@@ -32,6 +32,7 @@ class FormularioProdutoActivity : AppCompatActivity() {
         intent.getParcelableExtra<Produto>(CHAVE_PRODUTO)?.let { produtoCarregado ->
             title = "Alterar produto"
             idProduto = produtoCarregado.id
+            url = produtoCarregado.imagem
             binding.activityFormularioProdutoImagem
                 .tentaCarregarImagem(produtoCarregado.imagem)
             binding.activityFormularioProdutoNome
@@ -49,7 +50,11 @@ class FormularioProdutoActivity : AppCompatActivity() {
         val produtoDao = db.produtoDao()
         botaoSalvar.setOnClickListener {
             val produtoNovo = criaProduto()
-            produtoDao.salva(produtoNovo)
+            if(idProduto > 0) {
+                produtoDao.altera(produtoNovo)
+            } else {
+                produtoDao.salva(produtoNovo)
+            }
             finish()
         }
     }
@@ -68,6 +73,7 @@ class FormularioProdutoActivity : AppCompatActivity() {
         }
 
         return Produto(
+            id = idProduto,
             nome = nome,
             descricao = descricao,
             valor = valor,
