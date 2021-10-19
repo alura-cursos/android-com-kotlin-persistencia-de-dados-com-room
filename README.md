@@ -36,8 +36,10 @@ Ordenação de produtos:
 - `DAO`: definição dos comportamentos com o banco de dados
   - **comportamentos definidos**: inserção, alteração, remoção e consultas de todos os registros e com filtro
 - `Database`: configuração para criar a conexão com o banco de dados
+- `conversor de tipo`: converter um tipo complexo para um tipo compatível com o SQLite
 - `Menu de opções`: menu para editar e remover
 - `Extras`: técnica para enviar e receber informações entre Activities
+- `inicialização lateinit e lazy`: técnicas para criar propriedades em Activities que não podem ser inicializadas na construção da Activity
 
 ## 📁 Acesso ao projeto
 
