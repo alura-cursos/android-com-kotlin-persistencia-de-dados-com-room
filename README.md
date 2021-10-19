@@ -21,6 +21,14 @@ O projeto permite cadastrar, alterar e remover produtos com imagem, nome, descri
 
 ![removendo produto](https://user-images.githubusercontent.com/8989346/133252742-90509b74-e6df-4a47-bc2f-0208a0977d92.gif)
 
+## 🎯 Desafio
+
+Ordenação de produtos:
+
+![demonstração do desafio de ordenação de produtos](https://user-images.githubusercontent.com/8989346/137913949-2bed58cc-c9c5-4444-a4a3-6e1fcf94938d.gif)
+
+[Você pode conferir o resultado do desafio neste commit](https://github.com/alura-cursos/android-com-kotlin-persistencia-de-dados-com-room/commit/58fa63e2bb004d9144a0727a2dadd9265f0182ba).
+
 ## ✔️ Técnicas e tecnologias utilizadas
 
 - `Jetpack Room`: lib para persistência de dados em banco de dados interno com SQLite
