@@ -34,6 +34,7 @@ Ordenação de produtos:
 - `Jetpack Room`: lib para persistência de dados em banco de dados interno com SQLite
 - `Entidade`: definição da tabela que será criada no banco de dados
 - `DAO`: definição dos comportamentos com o banco de dados
+  - **comportamentos definidos**: inserção, alteração, remoção e consultas de todos os registros e com filtro
 - `Database`: configuração para criar a conexão com o banco de dados
 - `Menu de opções`: menu para editar e remover
 - `Extras`: técnica para enviar e receber informações entre Activities
