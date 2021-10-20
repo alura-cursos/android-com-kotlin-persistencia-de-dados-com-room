@@ -21,13 +21,23 @@ O projeto permite cadastrar, alterar e remover produtos com imagem, nome, descri
 
 ![removendo produto](https://user-images.githubusercontent.com/8989346/133252742-90509b74-e6df-4a47-bc2f-0208a0977d92.gif)
 
-## 🎯 Desafio
+## 🎯 Desafios
 
-Ordenação de produtos:
+### Menu de popup
+
+Menu de popup ao clicar e pressionar um item da lista de produtos.
+
+![demonstração do desafio menu de popup](https://user-images.githubusercontent.com/8989346/138088766-238502c3-cb3e-4960-932a-f77d88f3af62.png)
+
+[Resultado do desafio](https://github.com/alura-cursos/android-com-kotlin-persistencia-de-dados-com-room/commit/ff307fcaf25089689e944d5e79f4f8c3f15f8cc3).
+
+### Ordenação de produtos
+
+Menus de opções para ordenar produtos por nome, descrição ou valor. 
 
 ![demonstração do desafio de ordenação de produtos](https://user-images.githubusercontent.com/8989346/137913949-2bed58cc-c9c5-4444-a4a3-6e1fcf94938d.gif)
 
-[Você pode conferir o resultado do desafio neste commit](https://github.com/alura-cursos/android-com-kotlin-persistencia-de-dados-com-room/commit/58fa63e2bb004d9144a0727a2dadd9265f0182ba).
+[Resultado do desafio](https://github.com/alura-cursos/android-com-kotlin-persistencia-de-dados-com-room/commit/58fa63e2bb004d9144a0727a2dadd9265f0182ba).
 
 ## ✔️ Técnicas e tecnologias utilizadas
 
