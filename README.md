@@ -6,7 +6,7 @@ App de simulação um e-commerce de produtos naturais
 
 ## 🔨 Funcionalidades do projeto
 
-O projeto permite cadastrar, alterar e remover produtos com imagem, nome, descrição e valor. Os produtos salvos são apresentados em uma lista e podem ser visualizado ao realizar o clique.
+O projeto permite cadastrar, alterar e remover produtos com imagem, nome, descrição e valor. Os produtos salvos são apresentados em uma lista e podem ser visualizados ao realizar o clique.
 
 - Inserindo
 
