@@ -8,9 +8,7 @@ import androidx.room.Room
 import br.com.alura.orgs.database.AppDatabase
 import br.com.alura.orgs.databinding.ActivityListaProdutosActivityBinding
 import br.com.alura.orgs.ui.recyclerview.adapter.ListaProdutosAdapter
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 private const val TAG = "ListaProdutos"
 
@@ -23,17 +21,6 @@ class ListaProdutosActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        runBlocking {
-            Log.i(TAG, "onCreate: runBlocking init")
-            repeat(100){
-                launch {
-                    Log.i(TAG, "onCreate: launch init $it")
-                    delay(2000)
-                    Log.i(TAG, "onCreate: launch finish $it")
-                }
-            }
-            Log.i(TAG, "onCreate: runBlocking finish")
-        }
         setContentView(binding.root)
         configuraRecyclerView()
         configuraFab()
@@ -43,7 +30,13 @@ class ListaProdutosActivity : AppCompatActivity() {
         super.onResume()
         val db = AppDatabase.instancia(this)
         val produtoDao = db.produtoDao()
-        adapter.atualiza(produtoDao.buscaTodos())
+        val scope = MainScope()
+        scope.launch {
+            val produtos = withContext(Dispatchers.IO) {
+                produtoDao.buscaTodos()
+            }
+            adapter.atualiza(produtos)
+        }
     }
 
     private fun configuraFab() {
