@@ -8,6 +8,7 @@ import br.com.alura.orgs.databinding.ActivityFormularioProdutoBinding
 import br.com.alura.orgs.extensions.tentaCarregarImagem
 import br.com.alura.orgs.model.Produto
 import br.com.alura.orgs.ui.dialog.FormularioImagemDialog
+import kotlinx.coroutines.*
 import java.math.BigDecimal
 
 class FormularioProdutoActivity : AppCompatActivity() {
@@ -21,6 +22,7 @@ class FormularioProdutoActivity : AppCompatActivity() {
         val db = AppDatabase.instancia(this)
         db.produtoDao()
     }
+    private val scope = CoroutineScope(Dispatchers.IO)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,9 +49,13 @@ class FormularioProdutoActivity : AppCompatActivity() {
     }
 
     private fun tentaBuscarProduto() {
-        produtoDao.buscaPorId(produtoId)?.let {
-            title = "Alterar produto"
-            preencheCampos(it)
+        scope.launch {
+            produtoDao.buscaPorId(produtoId)?.let {
+                withContext(Dispatchers.Main) {
+                    title = "Alterar produto"
+                    preencheCampos(it)
+                }
+            }
         }
     }
 
@@ -70,8 +76,10 @@ class FormularioProdutoActivity : AppCompatActivity() {
 
         botaoSalvar.setOnClickListener {
             val produtoNovo = criaProduto()
-            produtoDao.salva(produtoNovo)
-            finish()
+            scope.launch {
+                produtoDao.salva(produtoNovo)
+                finish()
+            }
         }
     }
 
