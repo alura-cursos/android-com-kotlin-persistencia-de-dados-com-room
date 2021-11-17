@@ -20,6 +20,7 @@ class ListaProdutosActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityListaProdutosActivityBinding.inflate(layoutInflater)
     }
+    private val job = Job()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +42,12 @@ class ListaProdutosActivity : AppCompatActivity() {
             ).show()
         }
         val scope = MainScope()
+        scope.launch(job) {
+            repeat(1000) {
+                Log.i(TAG, "onResume: coroutine está em execução $it")
+                delay(1000)
+            }
+        }
         scope.launch(handler) {
             MainScope().launch(handler) {
                 throw Exception("lançando exception na coroutine em outro scope")
@@ -51,6 +58,11 @@ class ListaProdutosActivity : AppCompatActivity() {
             }
             adapter.atualiza(produtos)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        job.cancel()
     }
 
     private fun configuraFab() {
