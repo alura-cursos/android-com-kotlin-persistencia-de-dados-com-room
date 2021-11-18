@@ -12,6 +12,7 @@ import br.com.alura.orgs.databinding.ActivityDetalhesProdutoBinding
 import br.com.alura.orgs.extensions.formataParaMoedaBrasileira
 import br.com.alura.orgs.extensions.tentaCarregarImagem
 import br.com.alura.orgs.model.Produto
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class DetalhesProdutoActivity : AppCompatActivity() {
@@ -29,19 +30,17 @@ class DetalhesProdutoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         tentaCarregarProduto()
-    }
-
-    override fun onResume() {
-        super.onResume()
         buscaProduto()
     }
 
     private fun buscaProduto() {
         lifecycleScope.launch {
-            produto = produtoDao.buscaPorId(produtoId)
-            produto?.let {
-                preencheCampos(it)
-            } ?: finish()
+            produtoDao.buscaPorId(produtoId).collect { produtoEncontrado ->
+                produto = produtoEncontrado
+                produto?.let {
+                    preencheCampos(it)
+                } ?: finish()
+            }
         }
     }
 
