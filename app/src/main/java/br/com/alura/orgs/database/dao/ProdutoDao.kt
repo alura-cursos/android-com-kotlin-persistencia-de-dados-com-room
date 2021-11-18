@@ -2,12 +2,13 @@ package br.com.alura.orgs.database.dao
 
 import androidx.room.*
 import br.com.alura.orgs.model.Produto
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ProdutoDao {
 
     @Query("SELECT * FROM Produto")
-    suspend fun buscaTodos() : List<Produto>
+    fun buscaTodos() : Flow<List<Produto>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun salva(vararg produto: Produto)
