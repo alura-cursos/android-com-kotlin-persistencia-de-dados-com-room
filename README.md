@@ -27,7 +27,7 @@ O projeto permite cadastrar, alterar e remover produtos com imagem, nome, descri
 
 Menu de popup ao clicar e pressionar um item da lista de produtos.
 
-![demonstração do desafio menu de popup](https://user-images.githubusercontent.com/8989346/138088766-238502c3-cb3e-4960-932a-f77d88f3af62.png)
+![demonstração desafio popup](https://user-images.githubusercontent.com/8989346/143617874-c55ec2fb-fe56-4f0c-866c-af9bd3a1827b.gif)
 
 [Resultado do desafio](https://github.com/alura-cursos/android-com-kotlin-persistencia-de-dados-com-room/commit/ff307fcaf25089689e944d5e79f4f8c3f15f8cc3).
 
