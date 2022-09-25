@@ -1,10 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Orgs" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Orgs" parent="Theme.Material3.DayNight">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <!--        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>-->
         <item name="colorOnPrimary">@color/colorOnPrimary</item>
+
+        <item name="colorPrimaryContainer">@color/colorPrimaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/colorOnPrimaryContainer</item>
+        <item name="colorSurfaceVariant">@color/colorSurfaceVariant</item>
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/colorSecondary</item>
         <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
@@ -20,4 +25,6 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+
 </resources>
