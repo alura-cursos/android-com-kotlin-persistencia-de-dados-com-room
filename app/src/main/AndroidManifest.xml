@@ -5,14 +5,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".OrgsApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Orgs">
-        <activity
-            android:name=".ui.activity.DetalhesProdutoActivity" />
+        <activity android:name=".ui.activity.DetalhesProdutoActivity" />
         <activity android:name=".ui.activity.FormularioProdutoActivity" />
         <activity
             android:name=".ui.activity.ListaProdutosActivity"
